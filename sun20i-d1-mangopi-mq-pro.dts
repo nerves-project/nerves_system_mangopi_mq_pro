@@ -1,0 +1,337 @@
+// SPDX-License-Identifier: (GPL-2.0+ or MIT)
+// Copyright (C) 2021 Samuel Holland <samuel@sholland.org>
+
+/dts-v1/;
+
+#include "sun20i-d1.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/leds/common.h>
+#include <dt-bindings/pwm/pwm.h>
+
+/ {
+	model = "Allwinner D1-H MangoPi MQ-Pro";
+	compatible = "allwinner,d1-mangopi-mq-pro", "allwinner,sun20i-d1";
+
+	aliases {
+		mmc0 = &mmc0;
+		mmc1 = &mmc1;
+		mmc2 = &mmc2;
+		serial0 = &uart0;
+		spi0 = &spi0;
+	};
+
+	chosen {
+		stdout-path = "serial0:115200n8";
+	};
+
+	hdmi_connector: connector {
+		compatible = "hdmi-connector";
+		type = "a";
+
+		port {
+			hdmi_con_in: endpoint {
+				// FIXME: remote-endpoint = <&hdmi_out_con>;
+			};
+		};
+	};
+
+	reg_usbvbus: usbvbus {
+		compatible = "regulator-fixed";
+		regulator-name = "usbvbus";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		gpio = <&gpio 3 19 GPIO_ACTIVE_HIGH>; /* PD19 */
+		enable-active-high;
+		vin-supply = <&reg_vcc>;
+	};
+
+	reg_vcc: vcc {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+	};
+
+	reg_vcc_3v3: vcc-3v3 {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc-3v3";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		vin-supply = <&reg_vcc>;
+	};
+
+	reg_vdd_cpu: vdd-cpu {
+		compatible = "pwm-regulator";
+		pwms = <&pwm 0 50000 0>;
+		pwm-supply = <&reg_vcc>;
+		regulator-name = "vdd-cpu";
+		regulator-min-microvolt = <810000>;
+		regulator-max-microvolt = <1160000>;
+	};
+
+	wifi_pwrseq: wifi-pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		reset-gpios = <&gpio 6 12 GPIO_ACTIVE_LOW>; /* PG12 */
+	};
+
+        pwmleds {
+                compatible = "pwm-leds";
+
+	        led@2 {
+		        reg = <0x2>;
+		        color = <LED_COLOR_ID_BLUE>;
+		        function = LED_FUNCTION_INDICATOR;
+                        pwms = <&pwm 2 50000 0>;
+                        max-brightness = <255>;
+                };
+	};
+};
+
+&codec {
+	allwinner,routing = "Headphone Jack", "HPOUTL",
+			    "Headphone Jack", "HPOUTR",
+			    "LINEINL", "HPOUTL",
+			    "LINEINR", "HPOUTR",
+			    "MICIN3", "Headset Microphone",
+			    "Headset Microphone", "HBIAS";
+	allwinner,widgets = "Microphone", "Headset Microphone",
+			    "Headphone", "Headphone Jack";
+	avcc-supply = <&reg_aldo>;
+	hpvcc-supply = <&reg_hpldo>;
+	vdd33-supply = <&reg_vcc_3v3>;
+	status = "okay";
+};
+
+&cpu0 {
+	cpu-supply = <&reg_vdd_cpu>;
+};
+
+&ehci0 {
+	status = "okay";
+};
+
+&ehci1 {
+	status = "okay";
+};
+
+&gpio {
+	vcc-pa-supply = <&reg_vcc_3v3>;
+	vcc-pb-supply = <&reg_vcc_3v3>;
+	vcc-pc-supply = <&reg_vcc_3v3>;
+	vcc-pd-supply = <&reg_vcc_3v3>;
+	vcc-pe-supply = <&reg_vcc_3v3>;
+	vcc-pf-supply = <&reg_vcc_3v3>;
+	vcc-pg-supply = <&reg_vcc_3v3>;
+
+	i2s2_pb_pins: i2s2-pb-pins {
+		pins = "PB5", "PB6", "PB7";
+		function = "i2s2";
+	};
+
+	i2s2_pb3_din_pin: i2s2-pb3-din-pin {
+		pins = "PB3";
+		function = "i2s2_din";
+	};
+
+	i2s2_pb4_dout_pin: i2s2-pb4-dout-pin {
+		pins = "PB4";
+		function = "i2s2_dout";
+	};
+
+	ledc_pc0_pin: ledc-pc0-pin {
+		pins = "PC0";
+		function = "ledc";
+	};
+
+	pwm0_pd16_pin: pwm0-pd16-pin {
+		pins = "PD16";
+		function = "pwm0";
+	};
+
+	pwm2_pd18_pin: pwm2-pd18-pin {
+		pins = "PD18";
+		function = "pwm2";
+	};
+
+	pwm7_pd22_pin: pwm7-pd22-pin {
+		pins = "PD22";
+		function = "pwm7";
+	};
+
+	spdif_pd22_pin: spdif-pd22-pin {
+		pins = "PD22";
+		function = "spdif";
+	};
+};
+
+&i2c0 {
+	pinctrl-0 = <&i2c0_pb10_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&i2c2 {
+	pinctrl-0 = <&i2c2_pb0_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&i2s2 {
+	pinctrl-0 = <&i2s2_pb_pins>, <&i2s2_pb3_din_pin>, <&i2s2_pb4_dout_pin>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&ledc {
+	pinctrl-0 = <&ledc_pc0_pin>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	led@0 {
+		reg = <0x0>;
+		color = <LED_COLOR_ID_RGB>;
+		function = LED_FUNCTION_INDICATOR;
+	};
+};
+
+&mmc0 {
+	bus-width = <4>;
+	cd-gpios = <&gpio 5 6 GPIO_ACTIVE_HIGH>; /* PF6 */
+	disable-wp;
+	vmmc-supply = <&reg_vcc_3v3>;
+	vqmmc-supply = <&reg_vcc_3v3>;
+	pinctrl-0 = <&mmc0_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&mmc1 {
+	bus-width = <4>;
+	mmc-pwrseq = <&wifi_pwrseq>;
+	non-removable;
+	vmmc-supply = <&reg_vcc_3v3>;
+	vqmmc-supply = <&reg_vcc_3v3>;
+	pinctrl-0 = <&mmc1_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	xr829: wifi@1 {
+		reg = <1>;
+		host-wake-gpios = <&gpio 6 10 GPIO_ACTIVE_LOW>; /* PG10 */
+	};
+};
+
+&ohci0 {
+	status = "okay";
+};
+
+&ohci1 {
+	status = "okay";
+};
+
+&pwm {
+	pinctrl-0 = <&pwm0_pd16_pin>, <&pwm2_pd18_pin>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&reg_aldo {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	vdd33-supply = <&reg_vcc_3v3>;
+};
+
+&reg_hpldo {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	hpldoin-supply = <&reg_vcc_3v3>;
+};
+
+&reg_ldoa {
+	regulator-always-on;
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	ldo-in-supply = <&reg_vcc_3v3>;
+};
+
+&spi0 {
+	pinctrl-0 = <&spi0_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	flash@0 {
+		compatible = "spi-nand";
+		reg = <0>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "boot0";
+				reg = <0x00000000 0x00100000>;
+			};
+
+			partition@100000 {
+				label = "uboot";
+				reg = <0x00100000 0x00300000>;
+			};
+
+			partition@400000 {
+				label = "secure_storage";
+				reg = <0x00400000 0x00100000>;
+			};
+
+			partition@500000 {
+				label = "sys";
+				reg = <0x00500000 0x0fb00000>;
+			};
+		};
+	};
+};
+
+&spi1 {
+	pinctrl-0 = <&spi1_pd_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&ths {
+	vref-supply = <&reg_aldo>;
+};
+
+&uart0 {
+	pinctrl-0 = <&uart0_pb8_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&uart1 {
+	pinctrl-0 = <&uart1_pg6_pins>, <&uart1_pg8_rts_cts_pins>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	bluetooth {
+		compatible = "xradio,xr829-bt";
+		device-wakeup-gpios = <&gpio 6 16 GPIO_ACTIVE_LOW>; /* PG16 */
+		interrupts-extended = <&gpio 6 17 IRQ_TYPE_LEVEL_LOW>; /* PG17 */
+		interrupt-names = "wakeup";
+		reset-gpios = <&gpio 6 18 GPIO_ACTIVE_LOW>; /* PG18 */
+	};
+};
+
+&usb_otg {
+	dr_mode = "peripheral";
+	status = "okay";
+};
+
+&usbphy {
+	usb0_id_det-gpios = <&gpio 3 21 GPIO_ACTIVE_LOW>; /* PD21 */
+	usb0_vbus_det-gpios = <&gpio 3 20 GPIO_ACTIVE_HIGH>; /* PD20 */
+	usb0_vbus-supply = <&reg_usbvbus>;
+	usb1_vbus-supply = <&reg_vcc>;
+	status = "okay";
+};

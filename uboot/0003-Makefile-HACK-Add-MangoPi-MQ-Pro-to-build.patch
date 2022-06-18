@@ -1,0 +1,25 @@
+From 428f0384c75ea0f8ba7005f9380d8dd11c3ed924 Mon Sep 17 00:00:00 2001
+From: Frank Hunleth <fhunleth@troodon-software.com>
+Date: Fri, 17 Jun 2022 12:40:06 -0400
+Subject: [PATCH] Makefile: HACK: Add MangoPi MQ-Pro to build
+
+---
+ arch/riscv/dts/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/dts/Makefile b/arch/riscv/dts/Makefile
+index 88a798f8..502cf776 100644
+--- a/arch/riscv/dts/Makefile
++++ b/arch/riscv/dts/Makefile
+@@ -7,7 +7,7 @@ dtb-$(CONFIG_TARGET_OPENPITON_RISCV64) += openpiton-riscv64.dtb
+ dtb-$(CONFIG_TARGET_SIFIVE_UNLEASHED) += hifive-unleashed-a00.dtb
+ dtb-$(CONFIG_TARGET_SIFIVE_UNMATCHED) += hifive-unmatched-a00.dtb
+ dtb-$(CONFIG_TARGET_SIPEED_MAIX) += k210-maix-bit.dtb
+-dtb-$(CONFIG_TARGET_SUNXI) += sun20i-d1-nezha.dtb
++dtb-$(CONFIG_TARGET_SUNXI) += sun20i-d1-nezha.dtb sun20i-d1-mangopi-mq-pro.dtb
+ 
+ targets += $(dtb-y)
+ 
+-- 
+2.25.1
+
