@@ -7,7 +7,7 @@
 
 This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 
-![MangoPi MQ Pro](assets/mq-pro-pink-t.png)
+![MangoPi MQ Pro](assets/images/mq-pro-pink-t.png)
 <br><sup>[Image credit](#mangopi)</sup>
 
 | Feature              | Description                     |
