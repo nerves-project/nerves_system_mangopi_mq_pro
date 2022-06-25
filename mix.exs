@@ -56,7 +56,7 @@ defmodule NervesSystemMangopiMQPro.MixProject do
         {"TARGET_OS", "linux"},
         {"TARGET_ABI", "musl"},
         {"TARGET_GCC_FLAGS",
-          "-mabi=lp64d -fstack-protector-strong -march=rv64imafdc -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
+          "-mabi=lp64d -fstack-protector-strong -march=rv64imafdcv -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
 
       ],
       checksum: package_files()
