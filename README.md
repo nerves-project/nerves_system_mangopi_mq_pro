@@ -15,7 +15,7 @@ This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 | CPU                  | 1 GHz 64 bit RISC-V             |
 | Memory               | 512 MB or 1 GB DRAM             |
 | Storage              | MicroSD                         |
-| Linux kernel         | 5.14 w/ patches                 |
+| Linux kernel         | 5.18 w/ patches                 |
 | IEx terminal         | UART `ttyS0`                    |
 | GPIO, I2C, SPI       | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | Display              | Yes, but not supported yet      |
@@ -54,14 +54,10 @@ the USB C connector marked "OTG".
 
 ## Thanks
 
-Since there aren't many RISC-V boards out, it took a bit of searching to figure
-out how to bring this board up. The key was finding out that it's a trimmed down
-version of the
-[Nezha](https://www.indiegogo.com/projects/nezha-your-first-64bit-risc-v-linux-sbc-for-iot#/)
-board since it's possible to find decent device tree configurations and Linux
-configurations that actually work. Everything in this repository derives from
-that and not from Tina Linux. The Linux kernel comes from [smaeul's Allwinner D1
-Linux fork](https://github.com/smaeul/linux/tree/d1/all/arch/riscv).
+The most helpful Allwinner D1 information comes from
+[linux-sunxi.org/Allwinner_Nezha](https://linux-sunxi.org/Allwinner_Nezha). All
+of the work here wouldn't have been possible with out it. Thanks especially to
+[smaeul's Allwinner D1 Linux fork](https://github.com/smaeul/linux/tree/riscv/d1-wip/arch/riscv)
 
 [Image credit](#mangopi): This image is from [mangopi.cc](https://mangopi.cc/mangopi_mqpro).
 

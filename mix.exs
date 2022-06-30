@@ -100,8 +100,6 @@ defmodule NervesSystemMangopiMQPro.MixProject do
     [
       "fwup_include",
       "linux",
-      "sun20i-d1-mangopi-mq-pro.dts",
-      "sun20i-d1.dtsi",
       "rootfs_overlay",
       "uboot",
       "CHANGELOG.md",
