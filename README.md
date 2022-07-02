@@ -41,6 +41,41 @@ If you need custom modifications to this system for your device, clone this
 repository and update as described in [Making custom
 systems](https://hexdocs.pm/nerves/customizing-systems.html).
 
+
+## Depedencies
+
+* OTP 25 or higher
+* libmnl-dev or equivilent 
+* Nerves archive `mix archive.install hex nerves_bootstrap` [See here](https://github.com/nerves-project/nerves/blob/main/docs/Installation.md)
+
+### Example
+
+
+Creating a new hello world application
+
+```
+# This assumes you have used nerves before
+mix nerves.new hello_mango
+cd hello_mango
+echo "elixir 1.13.4-otp-25" > .tool-versions
+echo "erlang 25.0.2" >> .tool-versions 
+asdf install
+```
+
+Open up your `mix.exs` and update it to include
+
+```mix.exs
+{:nerves_system_mangopi_mq_pro, runtime: false, targets: :mangopi, nerves: [compile: true], git: "https://github.com/fhunleth/nerves_system_mangopi_mq_pro", branch: "main"}
+```
+
+
+```
+export MIX_TARGET=mangopi
+mix deps.get
+mix firmware
+mix burn
+```
+
 ## Console access
 
 The console is configured to output to the UART on pins 8 and 10 on the 40-pin
