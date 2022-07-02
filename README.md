@@ -45,7 +45,6 @@ systems](https://hexdocs.pm/nerves/customizing-systems.html).
 ## Depedencies
 
 * OTP 25 or higher
-* libmnl-dev or equivilent 
 * Nerves archive `mix archive.install hex nerves_bootstrap` [See here](https://github.com/nerves-project/nerves/blob/main/docs/Installation.md)
 
 ### Example
