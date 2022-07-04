@@ -41,35 +41,40 @@ If you need custom modifications to this system for your device, clone this
 repository and update as described in [Making custom
 systems](https://hexdocs.pm/nerves/customizing-systems.html).
 
+## Example use
 
-## Depedencies
+This example assumes some familiarity with Nerves. To use this system, you'll
+need OTP 25. Follow the [Nerves installation
+instructions](https://github.com/nerves-project/nerves/blob/main/docs/Installation.md)
+for additional system dependencies.
 
-* OTP 25 or higher
-* Nerves archive `mix archive.install hex nerves_bootstrap` [See here](https://github.com/nerves-project/nerves/blob/main/docs/Installation.md)
+Creating a new hello world application:
 
-### Example
-
-
-Creating a new hello world application
-
-```
-# This assumes you have used nerves before
+```sh
 mix nerves.new hello_mango
 cd hello_mango
-echo "elixir 1.13.4-otp-25" > .tool-versions
-echo "erlang 25.0.2" >> .tool-versions 
-asdf install
 ```
 
-Open up your `mix.exs` and update it to include
+Open up your `mix.exs` and add `:mangopi_mq_pro` to the `@all_targets` list at
+the top. It's ok to delete targets that you don't plan on using.
 
-```mix.exs
-{:nerves_system_mangopi_mq_pro, runtime: false, targets: :mangopi, nerves: [compile: true], git: "https://github.com/fhunleth/nerves_system_mangopi_mq_pro", branch: "main"}
+Then add the `:nerves_system_mango_mq_pro` dependency to the `deps` function:
+
+```elixir
+    {:nerves_system_mangopi_mq_pro, "~> 0.1", runtime: false, targets: :mangopi_mq_pro},
 ```
 
+This will load the latest released version. To use the latest code on the `main`
+branch here, add the following line:
 
+```elixir
+    {:nerves_system_mangopi_mq_pro, runtime: false, targets: :mangopi_mq_pro, nerves: [compile: true], git: "https://github.com/fhunleth/nerves_system_mangopi_mq_pro", branch: "main"}
 ```
-export MIX_TARGET=mangopi
+
+To build and write to a MicroSD card, run:
+
+```sh
+export MIX_TARGET=mangopi_mq_pro
 mix deps.get
 mix firmware
 mix burn
