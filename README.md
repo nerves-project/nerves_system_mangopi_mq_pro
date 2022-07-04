@@ -1,11 +1,29 @@
 # MangoPi MQ Pro Support
 
-*This is a work in progress.*
-
 [![CircleCI](https://circleci.com/gh/fhunleth/nerves_system_mangopi_mq_pro.svg?style=svg)](https://circleci.com/gh/fhunleth/nerves_system_mangopi_mq_pro)
 [![Hex version](https://img.shields.io/hexpm/v/nerves_system_mangopi_mq_pro.svg "Hex version")](https://hex.pm/packages/nerves_system_mangopi_mq_pro)
 
 This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
+
+*This is a work in progress. It may change in backwards incompatible ways and the documentation might be lacking.*
+
+To do:
+
+- [x] Bring up WiFi
+- [ ] Verify Blue PWM LED (was working with Linux 5.14, but broke with 5.18)
+- [?] Fix MicroSD flakiness on boot
+- [x] Verify USB host-only port (works with USB Flash drive)
+- [ ] Fix USB gadget mode on OTG port
+- [ ] Verify SPI
+- [ ] Verify I2C
+- [ ] Verify all GPIO work
+- [x] Verify HW watchdog
+- [x] Check that `TARGET_GCC_FLAGS` are right
+- [x] Update Linux kernel to 5.18
+- [x] Implement A/B firmware updates work
+- [x] Use SID for serial number
+- [ ] Reduce prints and shorten boot time
+- [ ] Verify HDMI
 
 ![MangoPi MQ Pro](assets/images/mq-pro-pink-t.png)
 <br><sup>[Image credit](#mangopi)</sup>
