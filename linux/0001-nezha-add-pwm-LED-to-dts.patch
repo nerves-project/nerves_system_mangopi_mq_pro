@@ -1,0 +1,35 @@
+From 4199323776fc4f623caa946bb83187aed1258179 Mon Sep 17 00:00:00 2001
+From: Frank Hunleth <fhunleth@troodon-software.com>
+Date: Sun, 3 Jul 2022 14:36:58 -0400
+Subject: [PATCH 1/1] nezha: add pwm LED to dts
+
+---
+ arch/riscv/boot/dts/allwinner/sun20i-d1-nezha.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/allwinner/sun20i-d1-nezha.dts b/arch/riscv/boot/dts/allwinner/sun20i-d1-nezha.dts
+index ce579430e..c12539930 100644
+--- a/arch/riscv/boot/dts/allwinner/sun20i-d1-nezha.dts
++++ b/arch/riscv/boot/dts/allwinner/sun20i-d1-nezha.dts
+@@ -62,6 +62,18 @@ wifi_pwrseq: wifi-pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+ 		reset-gpios = <&gpio 6 12 GPIO_ACTIVE_LOW>; /* PG12 */
+ 	};
++
++	pwmleds {
++		compatible = "pwm-leds";
++
++		led@2 {
++			reg = <0x2>;
++			color = <LED_COLOR_ID_BLUE>;
++			function = LED_FUNCTION_INDICATOR;
++			pwms = <&pwm 2 50000 0>;
++			max-brightness = <255>;
++		};
++	};
+ };
+ 
+ &codec {
+-- 
+2.25.1
+
