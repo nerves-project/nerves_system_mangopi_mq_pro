@@ -12,6 +12,20 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.2.0
+
+This release updates the Linux kernel to 5.18 in the hopes of fixing some Linux
+kernel flakiness.
+
+U-Boot has changed enough that I don't believe that a v0.1.1 image is
+upgradable. Please rewrite your MicroSD image.
+
+* Updates
+  * Linux 5.18-rc4 (smauel's wip-d1 Linux branch)
+  * Switch to the Nezha device tree since upstream updates have fixed the
+    warnings that caused me to create a custom dts.
+  * Enable earlycon for earlier logging from Linux
+
 ## v0.1.1
 
 The release fixes some issues that made v0.1.0 hard to use. The flaky MMC boot
