@@ -116,5 +116,11 @@ The most helpful Allwinner D1 information comes from
 of the work here wouldn't have been possible with out it. Thanks especially to
 [smaeul's Allwinner D1 Linux fork](https://github.com/smaeul/linux/tree/riscv/d1-wip/arch/riscv)
 
+Here are more useful links:
+
+* [bret.dk's ARMBian post](https://bret.dk/armbian-on-the-mangopi-mq-pro/)
+* [NixOS on D1](https://github.com/chuangzhu/nixos-sun20iw1p1)
+* [YuzukiHD Buildroot](https://github.com/YuzukiHD/Buildroot-YuzukiSBC)
+
 [Image credit](#mangopi): This image is from [mangopi.cc](https://mangopi.cc/mangopi_mqpro).
 
