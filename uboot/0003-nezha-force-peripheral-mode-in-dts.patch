@@ -1,0 +1,25 @@
+From 6d1c2edc623f6de514424a5275475ccc0ff25391 Mon Sep 17 00:00:00 2001
+From: Frank Hunleth <fhunleth@troodon-software.com>
+Date: Mon, 4 Jul 2022 19:26:40 -0400
+Subject: [PATCH] nezha: force peripheral mode in dts
+
+---
+ arch/riscv/dts/sun20i-d1-nezha.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/dts/sun20i-d1-nezha.dts b/arch/riscv/dts/sun20i-d1-nezha.dts
+index c1253993..d611d398 100644
+--- a/arch/riscv/dts/sun20i-d1-nezha.dts
++++ b/arch/riscv/dts/sun20i-d1-nezha.dts
+@@ -340,7 +340,7 @@
+ };
+ 
+ &usb_otg {
+-	dr_mode = "otg";
++	dr_mode = "peripheral";
+ 	status = "okay";
+ };
+ 
+-- 
+2.25.1
+
