@@ -10,13 +10,14 @@ This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 To do:
 
 - [x] Bring up WiFi
-- [ ] Verify Blue PWM LED (was working with Linux 5.14, but broke with 5.18)
-- [?] Fix MicroSD flakiness on boot
+- [x] Verify Blue PWM LED
+- [?] Fix MicroSD flakiness on boot (works better with 5.19, but random
+  corruption sometimes?)
 - [x] Verify USB host-only port (works with USB Flash drive)
 - [ ] Fix USB gadget mode on OTG port
-- [ ] Verify SPI
+- [x] Verify SPI (spidev1.0 and spidev1.1)
 - [ ] Verify I2C
-- [ ] Verify all GPIO work
+- [ ] Verify all GPIO work (GPIO inputs seem to work)
 - [x] Verify HW watchdog
 - [x] Check that `TARGET_GCC_FLAGS` are right
 - [x] Update Linux kernel to 5.18
