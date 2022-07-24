@@ -110,6 +110,39 @@ to access the output.
 The board has two network interfaces, a WiFi module and a virtual Ethernet on
 the USB C connector marked "OTG".
 
+## GPIO
+
+The following table is a mapping between the logical GPIO numbers used in
+software (sysfs, Circuits.GPIO), and the pin numbers on the 20x2 Raspberry Pi
+header. For example, to control pin 11 you would open a connection to GPIO 117:
+
+```elixir
+{:ok, pin} = Circuits.GPIO.open(117, :output)
+```
+
+| GPIO | Pin | Pin | GPIO |
+| :--: | :-: | :-: | :--: |
+|      | 1   | 2   |      | 
+| 205  | 3   | 4   |      |
+| 204  | 5   | 6   |      |
+| 39   | 7   | 8   | 40   |
+|      | 9   | 10  | 41   |
+| 117  | 11  | 12  | 37   |
+| 118  | 13  | 14  |      |
+| 32   | 15  | 16  | 33   |
+|      | 17  | 18  | 110  |
+|      | 19  | 20  |      |
+|      | 21  | 22  | 65   |
+|      | 23  | 24  |      |
+|      | 25  | 26  | 111  |
+| 145  | 27  | 28  | 144  |
+| 42   | 29  | 30  |      |
+| 43   | 31  | 32  | 64   |
+| 44   | 33  | 34  |      |
+| 38   | 35  | 36  | 34   |
+| 113  | 37  | 38  | 35   |
+|      | 39  | 40  | 36   |
+
 ## Thanks
 
 The most helpful Allwinner D1 information comes from
