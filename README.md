@@ -14,7 +14,7 @@ To do:
 - [?] Fix MicroSD flakiness on boot (works better with 5.19, but random
   corruption sometimes?)
 - [x] Verify USB host-only port (works with USB Flash drive)
-- [ ] Fix USB gadget mode on OTG port
+- [x] Fix USB gadget mode on OTG port
 - [x] Verify SPI (spidev1.0 and spidev1.1)
 - [ ] Verify I2C
 - [ ] Verify all GPIO work (GPIO inputs seem to work)
@@ -108,7 +108,8 @@ to access the output.
 ## Networking
 
 The board has two network interfaces, a WiFi module and a virtual Ethernet on
-the USB C connector marked "OTG".
+the USB C connector marked "OTG". If virtual Ethernet isn't working for you, try
+a different USB cable. You're welcome.
 
 ## GPIO
 
@@ -122,7 +123,7 @@ header. For example, to control pin 11 you would open a connection to GPIO 117:
 
 | GPIO | Pin | Pin | GPIO |
 | :--: | :-: | :-: | :--: |
-|      | 1   | 2   |      | 
+|      | 1   | 2   |      |
 | 205  | 3   | 4   |      |
 | 204  | 5   | 6   |      |
 | 39   | 7   | 8   | 40   |
@@ -143,6 +144,13 @@ header. For example, to control pin 11 you would open a connection to GPIO 117:
 | 113  | 37  | 38  | 35   |
 |      | 39  | 40  | 36   |
 
+## Schematics and datasheets
+
+* [Schematics](https://mangopi.cc/_media/mq-pro-sch-v12.pdf)
+* [IBOM](https://mangopi.cc/_media/mq-pro-v12-ibom.html) - Interactive web page
+  to help you find what part is located where
+* [D1 documentation](https://github.com/mangopi-sbc/MQ-Pro/tree/main/3.Docs)
+
 ## Thanks
 
 The most helpful Allwinner D1 information comes from
@@ -155,6 +163,7 @@ Here are more useful links:
 * [bret.dk's ARMBian post](https://bret.dk/armbian-on-the-mangopi-mq-pro/)
 * [NixOS on D1](https://github.com/chuangzhu/nixos-sun20iw1p1)
 * [YuzukiHD Buildroot](https://github.com/YuzukiHD/Buildroot-YuzukiSBC)
+* [DongshanPI Store](https://www.aliexpress.com/item/3256803971669780.html)
 
 [Image credit](#mangopi): This image is from [mangopi.cc](https://mangopi.cc/mangopi_mqpro).
 
