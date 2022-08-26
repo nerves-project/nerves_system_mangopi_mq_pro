@@ -12,6 +12,23 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.2.3
+
+This release synchronizes the device tree configuration with upstream's new
+MangoPi MQ Pro device tree. This has at least two noticable changes:
+
+1. The Blue LED is now called `":status"`. It was `"blue:indicator"` so any
+   references will need to be updated.
+2. The SPI device that's on the GPIO header pins is now `spidev0`. This makes it
+   the same as the Raspberry Pi, so this was a welcome change.
+
+* Updates
+  * Update Linux to smauel's wip-all branch. This is currently his latest and it
+    includes device tree updates specifically for the MangoPi MQ Pro.
+  * Serial numbers are now 8 hex digits since collisions were found with just 4.
+  * USB Gadget mode works on the OTG port (right-most port)
+  * Reverting firmware works now
+
 ## v0.2.2
 
 * Updates
