@@ -25,6 +25,7 @@ To do:
 - [x] Use SID for serial number
 - [ ] Reduce prints and shorten boot time
 - [ ] Verify HDMI
+- [ ] Verify camera
 
 ![MangoPi MQ Pro](assets/images/mq-pro-pink-t.png)
 <br><sup>[Image credit](#mangopi)</sup>
@@ -38,10 +39,10 @@ To do:
 | IEx terminal         | UART `ttyS0`                    |
 | GPIO, I2C, SPI       | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | Display              | Yes, but not supported yet      |
-| ADC                  | Yes                             |
+| ADC                  | No                              |
 | PWM                  | Yes, but no Elixir support      |
 | UART                 | ttyS0                           |
-| Camera               | None                            |
+| Camera               | Yes, but not supported yet      |
 | Ethernet             | No                              |
 | WiFi                 | Onboard WiFi                    |
 | RTC                  | No                              |
