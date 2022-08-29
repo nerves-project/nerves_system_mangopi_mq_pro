@@ -12,6 +12,11 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.2.4
+
+* Fixes
+  * Fix USB gadget mode on MacOS
+
 ## v0.2.3
 
 This release synchronizes the device tree configuration with upstream's new
