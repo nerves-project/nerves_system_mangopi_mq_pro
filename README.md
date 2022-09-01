@@ -11,12 +11,11 @@ To do:
 
 - [x] Bring up WiFi
 - [x] Verify Blue PWM LED
-- [?] Fix MicroSD flakiness on boot (works better with 5.19, but random
-  corruption sometimes?)
+- [?] Fix MicroSD flakiness on boot (seems much better now?)
 - [x] Verify USB host-only port (works with USB Flash drive)
 - [x] Fix USB gadget mode on OTG port
 - [x] Verify SPI (spidev1.0 and spidev1.1)
-- [ ] Verify I2C
+- [x] Verify I2C
 - [ ] Verify all GPIO work (GPIO inputs seem to work)
 - [x] Verify HW watchdog
 - [x] Check that `TARGET_GCC_FLAGS` are right
