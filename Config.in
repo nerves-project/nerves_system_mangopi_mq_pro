@@ -1,3 +1,2 @@
 # Add project-specific packages for Buildroot here
 
-source "$NERVES_DEFCONFIG_DIR/package/rtl8723ds/Config.in"
