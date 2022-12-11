@@ -7,11 +7,12 @@ BR2_RISCV_ISA_CUSTOM_RVC=y
 BR2_RISCV_ISA_CUSTOM_RVV=y
 BR2_TOOLCHAIN_EXTERNAL=y
 BR2_TOOLCHAIN_EXTERNAL_DOWNLOAD=y
-BR2_TOOLCHAIN_EXTERNAL_URL="https://github.com/nerves-project/toolchains/releases/download/v1.6.1/nerves_toolchain_riscv64_nerves_linux_musl-linux_${shell uname -m}-1.6.1-4C385C8.tar.xz"
-BR2_TOOLCHAIN_EXTERNAL_CUSTOM_PREFIX="riscv64-nerves-linux-musl"
+BR2_TOOLCHAIN_EXTERNAL_URL="https://github.com/nerves-project/toolchains/releases/download/v1.7.0/nerves_toolchain_riscv64_nerves_linux_gnu-linux_${shell uname -m}-1.7.0-7C71181.tar.xz"
+BR2_TOOLCHAIN_EXTERNAL_CUSTOM_PREFIX="riscv64-nerves-linux-gnu"
 BR2_TOOLCHAIN_EXTERNAL_GCC_11=y
 BR2_TOOLCHAIN_EXTERNAL_HEADERS_5_10=y
-BR2_TOOLCHAIN_EXTERNAL_CUSTOM_MUSL=y
+BR2_TOOLCHAIN_EXTERNAL_CUSTOM_GLIBC=y
+# BR2_TOOLCHAIN_EXTERNAL_INET_RPC is not set
 BR2_TOOLCHAIN_EXTERNAL_CXX=y
 BR2_TOOLCHAIN_EXTERNAL_OPENMP=y
 BR2_TAR_OPTIONS="--no-same-owner"

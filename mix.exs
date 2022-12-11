@@ -54,7 +54,7 @@ defmodule NervesSystemMangopiMQPro.MixProject do
         {"TARGET_ARCH", "riscv64"},
         {"TARGET_CPU", "baseline_rv64"},
         {"TARGET_OS", "linux"},
-        {"TARGET_ABI", "musl"},
+        {"TARGET_ABI", "gnu"},
         {"TARGET_GCC_FLAGS",
           "-mabi=lp64d -fstack-protector-strong -march=rv64imafdcv -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
 
@@ -67,7 +67,7 @@ defmodule NervesSystemMangopiMQPro.MixProject do
     [
       {:nerves, "~> 1.6.0 or ~> 1.7.15 or ~> 1.8", runtime: false},
       {:nerves_system_br, "1.22.0", runtime: false},
-      {:nerves_toolchain_riscv64_nerves_linux_musl, "~> 1.6.0", runtime: false},
+      {:nerves_toolchain_riscv64_nerves_linux_gnu, "~> 1.7.0", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
