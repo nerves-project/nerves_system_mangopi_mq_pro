@@ -34,7 +34,7 @@ To do:
 | CPU                  | 1 GHz 64 bit RISC-V             |
 | Memory               | 512 MB or 1 GB DRAM             |
 | Storage              | MicroSD                         |
-| Linux kernel         | 5.19 w/ patches                 |
+| Linux kernel         | 6.1 w/ patches                  |
 | IEx terminal         | UART `ttyS0`                    |
 | GPIO, I2C, SPI       | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | Display              | Yes, but not supported yet      |
