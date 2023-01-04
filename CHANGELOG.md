@@ -12,6 +12,23 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.4.0
+
+** Not firmware upgradable from v0.3.2! **
+
+This release pulls in upstream updates that remove bootloader workarounds, but
+required the U-Boot environment block to move. This means that it's not possible
+to firmware update from v0.3.2 to this one.
+
+* Changes
+  * Switch from Musl C to Glibc. This was done to increase compatibility -
+    specifically with RustlerPrecompiled which doesn't support Musl C on RISC-V.
+
+* Updated dependencies
+  * [nerves_system_br v1.22.1](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.22.1)
+  * Linux 6.1 with smael's Allwinner D1 updates
+  * GCC 12.2
+
 ## v0.3.2
 
 * Changes
