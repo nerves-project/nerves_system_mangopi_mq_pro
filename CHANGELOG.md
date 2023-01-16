@@ -12,6 +12,12 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.4.1
+
+* Changes
+  * Patch upstream device tree in v0.4.0 so that it supports the LEDs, SPI and
+    I2C0 without additional configuration.
+
 ## v0.4.0
 
 ** Not firmware upgradable from v0.3.2! **
