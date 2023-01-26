@@ -50,8 +50,8 @@ To do:
 ## Using
 
 The most common way of using this Nerves System is create a project with `mix
-nerves.new` and add `mangopi` references where needed and in a similar way
-to the default systems like `bbb`, etc. Then export `MIX_TARGET=mangopi`.
+nerves.new` and add `mangopi_mq_pro` references where needed and in a similar way
+to the default systems like `bbb`, etc. Then export `MIX_TARGET=mangopi_mq_pro`.
 See the [Getting started
 guide](https://hexdocs.pm/nerves/getting-started.html#creating-a-new-nerves-app)
 for more information.
@@ -166,4 +166,3 @@ Here are more useful links:
 * [DongshanPI Store](https://www.aliexpress.com/item/3256803971669780.html)
 
 [Image credit](#mangopi): This image is from [mangopi.cc](https://mangopi.cc/mangopi_mqpro).
-
