@@ -1,30 +1,11 @@
 # MangoPi MQ Pro Support
 
-[![CircleCI](https://circleci.com/gh/fhunleth/nerves_system_mangopi_mq_pro.svg?style=svg)](https://circleci.com/gh/fhunleth/nerves_system_mangopi_mq_pro)
+[![CircleCI](https://circleci.com/gh/nerves-project/nerves_system_mangopi_mq_pro.svg?style=svg)](https://circleci.com/gh/nerves-project/nerves_system_mangopi_mq_pro)
 [![Hex version](https://img.shields.io/hexpm/v/nerves_system_mangopi_mq_pro.svg "Hex version")](https://hex.pm/packages/nerves_system_mangopi_mq_pro)
 
 This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 
-*This is a work in progress. It may change in backwards incompatible ways and the documentation might be lacking.*
-
-To do:
-
-- [x] Bring up WiFi
-- [x] Verify Blue PWM LED
-- [?] Fix MicroSD flakiness on boot (seems much better now?)
-- [x] Verify USB host-only port (works with USB Flash drive)
-- [x] Fix USB gadget mode on OTG port
-- [x] Verify SPI (spidev1.0 and spidev1.1)
-- [x] Verify I2C
-- [ ] Verify all GPIO work (GPIO inputs seem to work)
-- [x] Verify HW watchdog
-- [x] Check that `TARGET_GCC_FLAGS` are right
-- [x] Update Linux kernel to 5.18
-- [x] Implement A/B firmware updates work
-- [x] Use SID for serial number
-- [ ] Reduce prints and shorten boot time
-- [ ] Verify HDMI
-- [ ] Verify camera
+*The MangoPi MQ Pro works well, but there are active updates upstream and here. Backwards incompatible changes may be out of our control.*
 
 ![MangoPi MQ Pro](assets/images/mq-pro-pink-t.png)
 <br><sup>[Image credit](#mangopi)</sup>
@@ -87,7 +68,7 @@ This will load the latest released version. To use the latest code on the `main`
 branch here, add the following line:
 
 ```elixir
-    {:nerves_system_mangopi_mq_pro, runtime: false, targets: :mangopi_mq_pro, nerves: [compile: true], git: "https://github.com/fhunleth/nerves_system_mangopi_mq_pro", branch: "main"}
+    {:nerves_system_mangopi_mq_pro, runtime: false, targets: :mangopi_mq_pro, nerves: [compile: true], git: "https://github.com/nerves-project/nerves_system_mangopi_mq_pro", branch: "main"}
 ```
 
 To build and write to a MicroSD card, run:
