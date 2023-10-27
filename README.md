@@ -20,7 +20,7 @@ This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 | GPIO, I2C, SPI       | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | Display              | Yes, but not supported yet      |
 | ADC                  | No                              |
-| PWM                  | Yes, but no Elixir support      |
+| PWM                  | 8 channels (4 exposed), but no Elixir support      |
 | UART                 | ttyS0                           |
 | Camera               | Yes, but not supported yet      |
 | Ethernet             | No                              |
@@ -96,34 +96,36 @@ a different USB cable. You're welcome.
 
 The following table is a mapping between the logical GPIO numbers used in
 software (sysfs, Circuits.GPIO), and the pin numbers on the 20x2 Raspberry Pi
-header. For example, to control pin 11 you would open a connection to GPIO 117:
+header. For example, to control pin 11 you would open a connection to GPIO 117.
 
 ```elixir
 {:ok, pin} = Circuits.GPIO.open(117, :output)
 ```
 
-| GPIO | Pin | Pin | GPIO |
-| :--: | :-: | :-: | :--: |
-|      | 1   | 2   |      |
-| 205  | 3   | 4   |      |
-| 204  | 5   | 6   |      |
-| 39   | 7   | 8   | 40   |
-|      | 9   | 10  | 41   |
-| 117  | 11  | 12  | 37   |
-| 118  | 13  | 14  |      |
-| 32   | 15  | 16  | 33   |
-|      | 17  | 18  | 110  |
-|      | 19  | 20  |      |
-|      | 21  | 22  | 65   |
-|      | 23  | 24  |      |
-|      | 25  | 26  | 111  |
-| 145  | 27  | 28  | 144  |
-| 42   | 29  | 30  |      |
-| 43   | 31  | 32  | 64   |
-| 44   | 33  | 34  |      |
-| 38   | 35  | 36  | 34   |
-| 113  | 37  | 38  | 35   |
-|      | 39  | 40  | 36   |
+The comments in the "Note" columns come from the [official schematic](https://mangopi.org/_media/mq-pro-sch-v12.pdf#page=3).
+
+| GPIO | Note | Pin | Pin | Note | GPIO |
+| :--: | :--: | :-: | :-: | :--: | :--: |
+|      | 3v3  |  1  |  2  | Vin  |      |
+| 205  | SDA  |  3  | 4   | Vin  |      |
+| 204  | SCL  |  5  | 6   | GND  |      |
+| 39   | MCLK |  7  | 8   | TX0  | 40   |
+|      | GND  |  9  | 10  | RX0  | 41   |
+| 117  | TX1  | 11  | 12  | I2S_CLK / PWM0 / Audio | 37   |
+| 118  | RX1  | 13  | 14  | GND  |      |
+| 32   | PWM3 | 15  | 16  | PWM4 | 33   |
+|      | 3v3  | 17  | 18  | DC   | 110  |
+|      | MOSI | 19  | 20  | GND  |      |
+|      | MISO | 21  | 22  | RX2  | 65   |
+|      | SCLK | 23  | 24  | CS0  |      |
+|      | GND  | 25  | 26  | CS1  | 111  |
+| 145  | SDA  | 27  | 28  | SCL  | 144  |
+| 42   |      | 29  | 30  | GND  |      |
+| 43   |      | 31  | 32  | TX2  | 64   |
+| 44   |      | 33  | 34  | GND  |      |
+| 38   | PWM1 / I2S_FS | 35  | 36  | DI2  | 34   |
+| 113  |      | 37  | 38  | I2S_DI0  | 35   |
+|      | GND  | 39  | 40  | I2S_D0   | 36   |
 
 ## Schematics and datasheets
 
