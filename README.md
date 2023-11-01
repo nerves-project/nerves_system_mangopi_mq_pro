@@ -127,6 +127,9 @@ The comments in the "Note" columns come from the [official schematic](https://ma
 | 113  |      | 37  | 38  | I2S_DI0  | 35   |
 |      | GND  | 39  | 40  | I2S_D0   | 36   |
 
+You can also get the pinout at the IEx prompt by using the
+[pinout](https://hex.pm/packages/pinout) library.
+
 ## Pinout diagram
 
 ![© CC-0 4.0 Lucas Sifoni](/assets/MangoPI_MQ_PRO_Pinout.svg)
