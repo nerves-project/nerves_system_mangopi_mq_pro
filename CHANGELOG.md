@@ -12,6 +12,27 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.7.0
+
+This is a major Buildroot and toolchain update that also adds support for HDMI
+output and runtime device tree overlays.
+
+Please see [nerves_system_br v1.25.0 release notes](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.25.0)
+for upgrade instructions if you've forked this system.
+
+* New features
+  * Fixed issues preventing the HDMI output from working and enabled libcairo to
+    support Scenic. Scenic works out of the box, but it appears that there are
+    still HDMI output issues for some monitors (1024x768 display instead of 1080p).
+  * Enabled runtime device tree overlay support. This is currently an expert
+    feature, but it does work for simple overlays.
+
+* Updated dependencies
+  * [nerves_system_br v1.25.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.25.2)
+  * [Buildroot 2023.08.4](https://lore.kernel.org/buildroot/87o7f6t7fs.fsf@48ers.dk/T/)
+  * [Erlang/OTP 26.1.2](https://erlang.org/download/OTP-26.1.2.README)
+
+
 ## v0.6.1
 
 This is a security/bug fix update.
