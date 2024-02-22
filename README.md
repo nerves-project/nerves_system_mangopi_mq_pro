@@ -136,10 +136,10 @@ You can also get the pinout at the IEx prompt by using the
 
 ## Schematics and datasheets
 
-* [Schematics](https://mangopi.cc/_media/mq-pro-sch-v12.pdf)
-* [IBOM](https://mangopi.cc/_media/mq-pro-v12-ibom.html) - Interactive web page
+* [Schematics](https://mangopi.org/_media/mq-pro-sch-v12.pdf)
+* [IBOM](https://mangopi.org/_media/mq-pro-v12-ibom.html) - Interactive web page
   to help you find what part is located where
-* [D1 documentation](https://github.com/mangopi-sbc/MQ-Pro/tree/main/3.Docs)
+* [D1 user manual (PDF, 1390 pages)](https://mangopi.org/_media/d1-h_user_manual_v1.0.pdf)
 
 ## Thanks
 
