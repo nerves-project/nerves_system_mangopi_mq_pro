@@ -1,7 +1,8 @@
 # MangoPi MQ Pro Support
 
-[![CircleCI](https://circleci.com/gh/nerves-project/nerves_system_mangopi_mq_pro.svg?style=svg)](https://circleci.com/gh/nerves-project/nerves_system_mangopi_mq_pro)
 [![Hex version](https://img.shields.io/hexpm/v/nerves_system_mangopi_mq_pro.svg "Hex version")](https://hex.pm/packages/nerves_system_mangopi_mq_pro)
+[![CI](https://github.com/nerves-project/nerves_system_mangopi_mq_pro/actions/workflows/ci.yml/badge.svg)](https://github.com/nerves-project/nerves_system_mangopi_mq_pro/actions/workflows/ci.yml)
+[![REUSE status](https://api.reuse.software/badge/github.com/nerves-project/nerves_system_mangopi_mq_pro)](https://api.reuse.software/info/github.com/nerves-project/nerves_system_mangopi_mq_pro)
 
 This is the base Nerves System configuration for the [MangoPi MQ Pro](#mangopi).
 
