@@ -12,6 +12,19 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.13.1
+
+This is a security/bug fix release.
+
+* Changes
+  * Turn off RISC-V vector instructions due to compilation errors
+
+* Package updates
+  * [Erlang/OTP 27.3.4.1](https://erlang.org/download/OTP-27.3.4.1.README.md)
+  * [Buildroot 2025.02.3 (fixed 2025.02.2)](https://lore.kernel.org/buildroot/49d039c0-8121-4a91-8a69-889376f85c71@rnout.be/T/)
+  * [erlinit 1.14.3](https://github.com/nerves-project/erlinit/releases/tag/v1.14.3)
+  * [fwup 1.13.0](https://github.com/fwup-home/fwup/releases/tag/v1.13.0)
+
 ## v0.13.0
 
 This is a major Buildroot update.
