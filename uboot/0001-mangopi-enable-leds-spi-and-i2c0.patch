@@ -1,17 +1,17 @@
-From 20dc2a6c82650cf2ce90f495e79456e188802f06 Mon Sep 17 00:00:00 2001
+From 243eedc3475e6d072a9ef99ee0d24b6f378914f3 Mon Sep 17 00:00:00 2001
 From: Frank Hunleth <fhunleth@troodon-software.com>
 Date: Mon, 16 Jan 2023 17:06:35 +0000
 Subject: [PATCH] mangopi: enable leds, spi and i2c0
 
 ---
- arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts | 77 +++++++++++++++++++++
- 1 file changed, 77 insertions(+)
+ arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts | 84 +++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
 
 diff --git a/arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts b/arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts
-index a7149baf..16b24db7 100644
+index a7149baf..3b94ccbd 100644
 --- a/arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts
 +++ b/arch/riscv/dts/sun20i-d1-mangopi-mq-pro.dts
-@@ -167,3 +167,80 @@
+@@ -167,3 +167,87 @@
  	usb0_vbus-supply = <&reg_vcc>;
  	status = "okay";
  };
@@ -38,6 +38,11 @@ index a7149baf..16b24db7 100644
 +	i2c0_pg12_pins: i2c0-pg12-pins {
 +		pins = "PG12", "PG13";
 +		function = "i2c0";
++	};
++
++	i2c0_pg12_scl_pin: i2c0-pg12-scl-pin {
++		pins = "PG12";
++		function = "gpio_out";
 +	};
 +
 +	spi1_clock_and_data_pd_pins: spi1-clock-and-data-pd-pins {
@@ -88,8 +93,10 @@ index a7149baf..16b24db7 100644
 +};
 +
 +&i2c0 {
++	pinctrl-names = "default", "gpio";
 +	pinctrl-0 = <&i2c0_pg12_pins>;
-+	pinctrl-names = "default";
++	pinctrl-1 = <&i2c0_pg12_scl_pin>;
++	scl-gpios = <&pio 6 12 GPIO_ACTIVE_HIGH>; /* PG12 I2C0_SCK */
 +	status = "okay";
 +};
 -- 
