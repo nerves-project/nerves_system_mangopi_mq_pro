@@ -12,6 +12,15 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.15.1
+
+This is a security/bug fix release.
+
+* Package updates
+  * [nerves_system_br 1.33.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.33.2)
+    * [Erlang/OTP 28.3.1](https://erlang.org/download/OTP-28.3.1.README.md)
+    * [Buildroot 2025.11.1](https://lore.kernel.org/buildroot/f6496994-b279-46f4-b554-7dbe2df92782@rnout.be/T/)
+
 ## v0.15.0
 
 This is a major Buildroot update. It should be a seamless update for most users.
