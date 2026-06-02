@@ -35,12 +35,12 @@ The most common way of using this Nerves System is create a project with `mix
 nerves.new` and add `mangopi_mq_pro` references where needed and in a similar way
 to the default systems like `bbb`, etc. Then export `MIX_TARGET=mangopi_mq_pro`.
 See the [Getting started
-guide](https://hexdocs.pm/nerves/getting-started.html#creating-a-new-nerves-app)
+guide](https://nerves.hexdocs.pm/getting-started.html#creating-a-new-nerves-app)
 for more information.
 
 If you need custom modifications to this system for your device, clone this
 repository and update as described in [Making custom
-systems](https://hexdocs.pm/nerves/customizing-systems.html).
+systems](https://nerves.hexdocs.pm/customizing-systems.html).
 
 ## Example use
 

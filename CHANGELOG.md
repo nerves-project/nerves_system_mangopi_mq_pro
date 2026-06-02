@@ -279,7 +279,7 @@ This is a Buildroot version update that appears to mostly contain bug and
 security fixes. It should be a low risk upgrade from v1.23.2.
 
 * New features
-  * Support factory reset, preventing firmware reverts. See [Nerves.Runtime.FwupOps](https://hexdocs.pm/nerves_runtime/Nerves.Runtime.FwupOps.html)
+  * Support factory reset, preventing firmware reverts. See [Nerves.Runtime.FwupOps](https://nerves-runtime.hexdocs.pm/Nerves.Runtime.FwupOps.html)
 
 * Updated dependencies
   * [nerves_system_br v1.24.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.24.0)
