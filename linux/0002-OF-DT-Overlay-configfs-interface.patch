@@ -105,10 +105,10 @@ diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
 index 80b5fd44ab1c..14c2ce96e4c5 100644
 --- a/drivers/of/Kconfig
 +++ b/drivers/of/Kconfig
-@@ -94,4 +94,11 @@ config OF_DMA_DEFAULT_COHERENT
- 	# arches should select this if DMA is coherent by default for OF devices
+@@ -126,4 +126,11 @@ config OF_NUMA
+ config OF_NUMA
  	bool
- 
+
 +config OF_CONFIGFS
 +	bool "Device Tree Overlay ConfigFS interface"
 +	select CONFIGFS_FS
@@ -123,11 +123,11 @@ index e0360a44306e..90c92ced24e6 100644
 +++ b/drivers/of/Makefile
 @@ -1,6 +1,7 @@
  # SPDX-License-Identifier: GPL-2.0
- obj-y = base.o device.o platform.o property.o
+ obj-y = base.o cpu.o device.o module.o platform.o property.o
  obj-$(CONFIG_OF_KOBJ) += kobj.o
 +obj-$(CONFIG_OF_CONFIGFS) += configfs.o
  obj-$(CONFIG_OF_DYNAMIC) += dynamic.o
- obj-$(CONFIG_OF_FLATTREE) += fdt.o
+ obj-$(CONFIG_OF_FLATTREE) += fdt.o empty_root.dtb.o
  obj-$(CONFIG_OF_EARLY_FLATTREE) += fdt_address.o
 diff --git a/drivers/of/configfs.c b/drivers/of/configfs.c
 new file mode 100644
@@ -218,7 +218,7 @@ index 000000000000..ac04301dabe1
 +		goto out_err;
 +
 +	err = of_overlay_fdt_apply((void *)overlay->fw->data,
-+				   (u32)overlay->fw->size, &overlay->ov_id);
++				   (u32)overlay->fw->size, &overlay->ov_id, NULL);
 +	if (err != 0)
 +		goto out_err;
 +
@@ -251,7 +251,7 @@ index 000000000000..ac04301dabe1
 +	NULL,
 +};
 +
-+ssize_t cfs_overlay_item_dtbo_read(struct config_item *item,
++static ssize_t cfs_overlay_item_dtbo_read(struct config_item *item,
 +		void *buf, size_t max_count)
 +{
 +	struct cfs_overlay_item *overlay = to_cfs_overlay_item(item);
@@ -274,7 +274,7 @@ index 000000000000..ac04301dabe1
 +	return overlay->dtbo_size;
 +}
 +
-+ssize_t cfs_overlay_item_dtbo_write(struct config_item *item,
++static ssize_t cfs_overlay_item_dtbo_write(struct config_item *item,
 +		const void *buf, size_t count)
 +{
 +	struct cfs_overlay_item *overlay = to_cfs_overlay_item(item);
@@ -292,7 +292,7 @@ index 000000000000..ac04301dabe1
 +	overlay->dtbo_size = count;
 +
 +	err = of_overlay_fdt_apply(overlay->dtbo, overlay->dtbo_size,
-+				   &overlay->ov_id);
++				   &overlay->ov_id, NULL);
 +	if (err != 0)
 +		goto out_err;
 +
