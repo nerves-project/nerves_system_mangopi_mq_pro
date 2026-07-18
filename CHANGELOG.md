@@ -12,6 +12,14 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.17.0
+
+This is a major update to the Linux kernel from the original custom fork to
+mainline.
+
+* Updated dependencies
+  * Linux 6.18.36 (Huge thanks to @Lucassifoni!)
+
 ## v0.16.0
 
 This is a major update with security and feature updates throughout.
