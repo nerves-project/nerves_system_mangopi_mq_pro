@@ -58,7 +58,7 @@ defmodule NervesSystemMangopiMQPro.MixProject do
         {"TARGET_GCC_FLAGS",
          "-mabi=lp64d -fstack-protector-strong -march=rv64imafdc_zicsr_zifencei -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
       ],
-      checksum: package_files()
+      checksum: source_finger_print_files()
     ]
   end
 
@@ -99,24 +99,30 @@ defmodule NervesSystemMangopiMQPro.MixProject do
     ]
   end
 
-  defp package_files do
+  defp source_finger_print_files do
     [
       "fwup_include",
       "linux",
       "rootfs_overlay",
       "uboot",
-      "CHANGELOG.md",
       "fwup-ops.conf",
       "fwup.conf",
-      "LICENSES/*",
       "mix.exs",
       "nerves_defconfig",
       "post-build.sh",
-      "post-createfs.sh",
+      "post-createfs.sh"
+    ]
+  end
+
+  defp package_files do
+    [
+      "CHANGELOG.md",
+      "checksum.exs",
+      "LICENSES/*",
       "README.md",
       "REUSE.toml",
       "VERSION"
-    ]
+    ] ++ source_finger_print_files()
   end
 
   defp build_runner_opts() do
