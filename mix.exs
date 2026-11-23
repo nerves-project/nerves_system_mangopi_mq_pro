@@ -15,6 +15,7 @@ defmodule NervesSystemMangopiMQPro.MixProject do
       # Because we're using OTP 27, we need to enforce Elixir 1.17 or later.
       elixir: "~> 1.17",
       compilers: Mix.compilers() ++ [:nerves_package],
+      nerves: nerves(),
       nerves_package: nerves_package(),
       description: description(),
       package: package(),
@@ -34,28 +35,63 @@ defmodule NervesSystemMangopiMQPro.MixProject do
     ]
   end
 
+  defp nerves do
+    [
+      actions: [
+        {Nerves.BuildAction.NervesV1System,
+         app: @app,
+         artifact_sites: artifact_sites(),
+         package_env: package_env(),
+         build_runner_opts: build_runner_opts()}
+      ],
+      config: [
+        # The current MangoPi U-Boot version doesn't seem to like fragments so turn them off
+        rootfs_type:
+          {:squashfs,
+           [
+             "-no-fragments",
+             "-no-tailends",
+             "-mkfs-time",
+             "0",
+             "-all-time",
+             "0",
+             "-no-xattrs",
+             "-quiet"
+           ]}
+      ]
+    ]
+  end
+
   defp nerves_package do
     [
       type: :system,
-      artifact_sites: [
-        {:github_releases, "#{@github_organization}/#{@app}"}
-      ],
+      artifact_sites: artifact_sites(),
       artifact_checksum: true,
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
       platform_config: [
         defconfig: "nerves_defconfig"
       ],
-      # baseline_rv64 enables the a, c, d, and m extensions in zig
-      env: [
-        {"TARGET_ARCH", "riscv64"},
-        {"TARGET_CPU", "baseline_rv64"},
-        {"TARGET_OS", "linux"},
-        {"TARGET_ABI", "gnu"},
-        {"TARGET_GCC_FLAGS",
-         "-mabi=lp64d -fstack-protector-strong -march=rv64imafdc_zicsr_zifencei -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
-      ],
+      env: package_env(),
       checksum: source_finger_print_files()
+    ]
+  end
+
+  defp artifact_sites do
+    [
+      {:github_releases, "#{@github_organization}/#{@app}"}
+    ]
+  end
+
+  defp package_env do
+    # baseline_rv64 enables the a, c, d, and m extensions in zig
+    [
+      {"TARGET_ARCH", "riscv64"},
+      {"TARGET_CPU", "baseline_rv64"},
+      {"TARGET_OS", "linux"},
+      {"TARGET_ABI", "gnu"},
+      {"TARGET_GCC_FLAGS",
+       "-mabi=lp64d -fstack-protector-strong -march=rv64imafdc_zicsr_zifencei -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
     ]
   end
 
@@ -134,5 +170,4 @@ defmodule NervesSystemMangopiMQPro.MixProject do
       primary_site -> ["BR2_PRIMARY_SITE=#{primary_site}"]
     end
   end
-
 end
