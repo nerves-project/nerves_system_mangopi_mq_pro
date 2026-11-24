@@ -12,6 +12,22 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v0.18.3
+
+IMPORTANT: There was a regression at some point that prevented MangoPi MQ Pros
+from booting. This release has fixes for the boot issue, but USB gadget Ethernet
+still doesn't work.
+
+This is a security and bug fix release.
+
+* Fixes
+  * Update U-Boot kernel load address and force SquashFS flags for Nerves 2
+
+* Package updates
+  * [nerves_system_br 1.35.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.35.4)
+  * [Buildroot 2026.08.2](https://lore.kernel.org/buildroot/buildroot-2026.08.2-announce-1794940330@buildroot.org/T/)
+  * [fwup 1.17.2](https://github.com/fwup-home/fwup/releases/tag/v1.17.2)
+
 ## v0.18.2
 
 * Changes
