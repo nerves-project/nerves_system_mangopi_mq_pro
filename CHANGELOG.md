@@ -15,8 +15,7 @@ follows:
 ## v0.18.3
 
 IMPORTANT: There was a regression at some point that prevented MangoPi MQ Pros
-from booting. This release has fixes for the boot issue, but USB gadget Ethernet
-still doesn't work.
+from booting. This release has fixes for the boot issue.
 
 This is a security and bug fix release.
 
